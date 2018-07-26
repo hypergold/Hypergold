@@ -1,0 +1,619 @@
++
++github.com/HcashOrg/hcashd/addrmgr/network.go	 GroupKey				 100.00% (23/23)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.GetBestLocalAddress	 100.00% (19/19)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.getNewBucket		 100.00% (15/15)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.AddAddressByIP		 100.00% (14/14)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.getTriedBucket		 100.00% (14/14)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.AddLocalAddress		 100.00% (11/11)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.pickTried			 100.00% (8/8)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.reset			 100.00% (6/6)
++github.com/HcashOrg/hcashd/addrmgr/network.go	 IsRFC1918				 100.00% (4/4)
++github.com/HcashOrg/hcashd/addrmgr/network.go	 IsRFC5737				 100.00% (4/4)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.AddAddresses		 100.00% (4/4)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 New					 100.00% (3/3)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.NeedMoreAddresses		 100.00% (3/3)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.AddAddress			 100.00% (3/3)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.NumAddresses		 100.00% (3/3)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 NetAddressKey				 100.00% (2/2)
++github.com/HcashOrg/hcashd/addrmgr/network.go	 IsRFC4862				 100.00% (1/1)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.numAddresses		 100.00% (1/1)
++github.com/HcashOrg/hcashd/addrmgr/log.go		 init					 100.00% (1/1)
++github.com/HcashOrg/hcashd/addrmgr/knownaddress.go	 KnownAddress.NetAddress		 100.00% (1/1)
++github.com/HcashOrg/hcashd/addrmgr/knownaddress.go	 KnownAddress.LastAttempt		 100.00% (1/1)
++github.com/HcashOrg/hcashd/addrmgr/log.go		 DisableLog				 100.00% (1/1)
++github.com/HcashOrg/hcashd/addrmgr/network.go	 ipNet					 100.00% (1/1)
++github.com/HcashOrg/hcashd/addrmgr/network.go	 IsIPv4					 100.00% (1/1)
++github.com/HcashOrg/hcashd/addrmgr/network.go	 IsLocal				 100.00% (1/1)
++github.com/HcashOrg/hcashd/addrmgr/network.go	 IsOnionCatTor				 100.00% (1/1)
++github.com/HcashOrg/hcashd/addrmgr/network.go	 IsRFC2544				 100.00% (1/1)
++github.com/HcashOrg/hcashd/addrmgr/network.go	 IsRFC3849				 100.00% (1/1)
++github.com/HcashOrg/hcashd/addrmgr/network.go	 IsRFC3927				 100.00% (1/1)
++github.com/HcashOrg/hcashd/addrmgr/network.go	 IsRFC3964				 100.00% (1/1)
++github.com/HcashOrg/hcashd/addrmgr/network.go	 IsRFC4193				 100.00% (1/1)
++github.com/HcashOrg/hcashd/addrmgr/network.go	 IsRFC4380				 100.00% (1/1)
++github.com/HcashOrg/hcashd/addrmgr/network.go	 IsRFC4843				 100.00% (1/1)
++github.com/HcashOrg/hcashd/addrmgr/network.go	 IsRFC6052				 100.00% (1/1)
++github.com/HcashOrg/hcashd/addrmgr/network.go	 IsRFC6145				 100.00% (1/1)
++github.com/HcashOrg/hcashd/addrmgr/network.go	 IsRFC6598				 100.00% (1/1)
++github.com/HcashOrg/hcashd/addrmgr/network.go	 IsValid				 100.00% (1/1)
++github.com/HcashOrg/hcashd/addrmgr/network.go	 IsRoutable				 100.00% (1/1)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.find			 100.00% (1/1)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.GetAddress			 95.35% (41/43)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.Good			 93.18% (41/44)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.Connected			 90.00% (9/10)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.addressHandler		 88.89% (8/9)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.AddressCache		 87.50% (14/16)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.Attempt			 85.71% (6/7)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.Start			 83.33% (5/6)
++github.com/HcashOrg/hcashd/addrmgr/knownaddress.go	 KnownAddress.chance			 76.92% (10/13)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.DeserializeNetAddress	 71.43% (5/7)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.Stop			 71.43% (5/7)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.updateAddress		 53.33% (16/30)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 getReachabilityFrom			 51.52% (17/33)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.savePeers			 51.28% (20/39)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.expireNew			 50.00% (11/22)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 ipString				 50.00% (2/4)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.loadPeers			 45.45% (5/11)
++github.com/HcashOrg/hcashd/addrmgr/knownaddress.go	 KnownAddress.isBad			 36.36% (4/11)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.HostToNetAddress		 26.67% (4/15)
++github.com/HcashOrg/hcashd/addrmgr/addrmanager.go	 AddrManager.deserializePeers		 6.00% (3/50)
++github.com/HcashOrg/hcashd/addrmgr/log.go		 UseLogger				 0.00% (0/1)
++github.com/HcashOrg/hcashd/addrmgr			 ---------------------------------	 71.69% (385/537)
++
+ 
+359  blockchain/accept.go
+@@ -0,0 +1,359 @@
++// Copyright (c) 2013-2016 The btcsuite developers
++// Copyright (c) 2015-2016 The Decred developers
++// Copyright (c) 2017 The Hcash developers
++// Use of this source code is governed by an ISC
++// license that can be found in the LICENSE file.
++
++package blockchain
++
++import (
++	"encoding/binary"
++	"fmt"
++	"math"
++	"time"
++
++	"github.com/HcashOrg/hcashd/blockchain/stake"
++	"github.com/HcashOrg/hcashd/chaincfg/chainhash"
++	"github.com/HcashOrg/hcashd/txscript"
++	"github.com/HcashOrg/hcashutil"
++)
++
++// checkCoinbaseUniqueHeight checks to ensure that for all blocks height > 1
++// that the coinbase contains the height encoding to make coinbase hash collisions
++// impossible.
++func checkCoinbaseUniqueHeight(blockHeight, blockKeyHeight int64, block *hcashutil.Block) error {
++	// Coinbase TxOut[0] is always tax, TxOut[1] is always
++	// height + extranonce, so at least two outputs must
++	// exist.
++	isKeyBlock := false
++	if HashToBig(block.Hash()).Cmp(CompactToBig(block.MsgBlock().Header.Bits)) <= 0 {
++		isKeyBlock = true
++	}
++
++	if isKeyBlock {
++		if len(block.MsgBlock().Transactions[0].TxOut) < 2 ||
++			len(block.MsgBlock().Transactions[1].TxOut) < 2{
++			str := fmt.Sprintf("block %v is missing necessary coinbase "+
++				"outputs", block.Hash())
++			return ruleError(ErrFirstTxNotCoinbase, str)
++		}
++	}else{
++		if len(block.MsgBlock().Transactions[0].TxOut) < 2 {
++			str := fmt.Sprintf("block %v is missing necessary coinbase "+
++				"outputs", block.Hash())
++			return ruleError(ErrFirstTxNotCoinbase, str)
++		}
++	}
++
++
++	// The first 4 bytes of the NullData output must be the
++	// encoded height of the block, so that every coinbase
++	// created has a unique transaction hash.
++	var nullData []byte
++	var err error
++	if isKeyBlock {
++		nullData, err = txscript.GetNullDataContent(
++			block.MsgBlock().Transactions[1].TxOut[0].Version,
++			block.MsgBlock().Transactions[1].TxOut[0].PkScript)
++	}else {
++		nullData, err = txscript.GetNullDataContent(
++			block.MsgBlock().Transactions[0].TxOut[0].Version,
++			block.MsgBlock().Transactions[0].TxOut[0].PkScript)
++	}
++
++	if err != nil {
++		str := fmt.Sprintf("block %v txOut 1 has wrong pkScript "+
++			"type", block.Hash())
++		return ruleError(ErrFirstTxNotCoinbase, str)
++	}
++
++	if len(nullData) < 4 {
++		str := fmt.Sprintf("block %v txOut 1 has too short nullData "+
++			"push to contain height", block.Hash())
++		return ruleError(ErrFirstTxNotCoinbase, str)
++	}
++
++	// Check the height and ensure it is correct.
++	cbHeight := binary.LittleEndian.Uint32(nullData[0:4])
++	if cbHeight != uint32(blockHeight) {
++		prevBlock := block.MsgBlock().Header.PrevBlock
++		str := fmt.Sprintf("block %v txOut 1 has wrong height in "+
++			"coinbase; want %v, got %v; prevBlock %v, header height %v",
++			block.Hash(), blockHeight, cbHeight, prevBlock,
++			block.MsgBlock().Header.Height)
++		return ruleError(ErrCoinbaseHeight, str)
++	}
++
++	return nil
++}
++
++// IsFinalizedTransaction determines whether or not a transaction is finalized.
++func IsFinalizedTransaction(tx *hcashutil.Tx, blockHeight int64,
++	blockTime time.Time) bool {
++	msgTx := tx.MsgTx()
++
++	// Lock time of zero means the transaction is finalized.
++	lockTime := msgTx.LockTime
++	if lockTime == 0 {
++		return true
++	}
++
++	// The lock time field of a transaction is either a block height at
++	// which the transaction is finalized or a timestamp depending on if the
++	// value is before the txscript.LockTimeThreshold.  When it is under the
++	// threshold it is a block height.
++	blockTimeOrHeight := int64(0)
++	if lockTime < txscript.LockTimeThreshold {
++		blockTimeOrHeight = blockHeight
++	} else {
++		blockTimeOrHeight = blockTime.Unix()
++	}
++	if int64(lockTime) < blockTimeOrHeight {
++		return true
++	}
++
++	// At this point, the transaction's lock time hasn't occurred yet, but
++	// the transaction might still be finalized if the sequence number
++	// for all transaction inputs is maxed out.
++	for _, txIn := range msgTx.TxIn {
++		if txIn.Sequence != math.MaxUint32 {
++			return false
++		}
++	}
++	return true
++}
++
++// checkBlockContext peforms several validation checks on the block which depend
++// on its position within the block chain.
++//
++// The flags modify the behavior of this function as follows:
++//  - BFFastAdd: The transaction are not checked to see if they are finalized
++//    and the somewhat expensive duplication transaction check is not performed.
++//
++// The flags are also passed to checkBlockHeaderContext.  See its documentation
++// for how the flags modify its behavior.
++func (b *BlockChain) checkBlockContext(block *hcashutil.Block, prevNode *blockNode, flags BehaviorFlags) error {
++	// The genesis block is valid by definition.
++	if prevNode == nil {
++		return nil
++	}
++
++	// Perform all block header related validation checks.
++	header := &block.MsgBlock().Header
++	err := b.checkBlockHeaderContext(header, prevNode, flags)
++	if err != nil {
++		return err
++	}
++
++	fastAdd := flags&BFFastAdd == BFFastAdd
++	if !fastAdd {
++		// A block must not exceed the maximum allowed size as defined
++		// by the network parameters and the current status of any hard
++		// fork votes to change it when serialized.
++		maxBlockSize, err := b.maxBlockSize(prevNode)
++		if err != nil {
++			return err
++		}
++		serializedSize := int64(block.MsgBlock().Header.Size)
++		if serializedSize > maxBlockSize {
++			str := fmt.Sprintf("serialized block is too big - "+
++				"got %d, max %d", serializedSize,
++				maxBlockSize)
++			return ruleError(ErrBlockTooBig, str)
++		}
++
++		// The height of this block is one more than the referenced
++		// previous block.
++		blockHeight := prevNode.height + 1
++		blockKeyHeight := prevNode.keyHeight
++
++		// Ensure all transactions in the block are finalized.
++		for _, tx := range block.Transactions() {
++			if !IsFinalizedTransaction(tx, blockHeight,
++				header.Timestamp) {
++
++				str := fmt.Sprintf("block contains unfinalized regular "+
++					"transaction %v", tx.Hash())
++				return ruleError(ErrUnfinalizedTx, str)
++			}
++		}
++		for _, stx := range block.STransactions() {
++			if !IsFinalizedTransaction(stx, blockHeight,
++				header.Timestamp) {
++
++				str := fmt.Sprintf("block contains unfinalized stake "+
++					"transaction %v", stx.Hash())
++				return ruleError(ErrUnfinalizedTx, str)
++			}
++		}
++
++		// Check that the node is at the correct height in the blockchain,
++		// as specified in the block header.
++		if blockHeight != int64(block.MsgBlock().Header.Height) {
++			errStr := fmt.Sprintf("Block header height invalid; expected %v"+
++				" but %v was found", blockHeight, header.Height)
++			return ruleError(ErrBadBlockHeight, errStr)
++		}
++
++		// Check that the coinbase contains at minimum the block
++		// height in output 1.
++		if blockHeight > 1 {
++			err := checkCoinbaseUniqueHeight(blockHeight, blockKeyHeight, block)
++			if err != nil {
++				return err
++			}
++		}
++	}
++
++	return nil
++}
++
++// ticketsSpentInBlock fetches a list of tickets that were spent in the
++// block.
++func ticketsSpentInBlock(bl *hcashutil.Block) []chainhash.Hash {
++	var tickets []chainhash.Hash
++	for _, stx := range bl.MsgBlock().STransactions {
++		if stake.DetermineTxType(stx) == stake.TxTypeSSGen {
++			tickets = append(tickets, stx.TxIn[1].PreviousOutPoint.Hash)
++		}
++	}
++
++	return tickets
++}
++
++// ticketsRevokedInBlock fetches a list of tickets that were revoked in the
++// block.
++func ticketsRevokedInBlock(bl *hcashutil.Block) []chainhash.Hash {
++	var tickets []chainhash.Hash
++	for _, stx := range bl.MsgBlock().STransactions {
++		if stake.DetermineTxType(stx) == stake.TxTypeSSRtx {
++			tickets = append(tickets, stx.TxIn[0].PreviousOutPoint.Hash)
++		}
++	}
++
++	return tickets
++}
++
++// voteBitsInBlock returns a list of vote bits for the voters in this block.
++func voteBitsInBlock(bl *hcashutil.Block) []VoteVersionTuple {
++	var voteBits []VoteVersionTuple
++	for _, stx := range bl.MsgBlock().STransactions {
++		if is, _ := stake.IsSSGen(stx); !is {
++			continue
++		}
++
++		voteBits = append(voteBits, VoteVersionTuple{
++			Version: stake.SSGenVersion(stx),
++			Bits:    stake.SSGenVoteBits(stx),
++		})
++	}
++
++	return voteBits
++}
++
++// maybeAcceptBlock potentially accepts a block into the block chain and, if
++// accepted, returns whether or not it is on the main chain.  It performs
++// several validation checks which depend on its position within the block chain
++// before adding it.  The block is expected to have already gone through
++// ProcessBlock before calling this function with it.
++//
++// The flags modify the behavior of this function as follows:
++//  - BFDryRun: The memory chain index will not be pruned and no accept
++//    notification will be sent since the block is not being accepted.
++//
++// This function MUST be called with the chain state lock held (for writes).
++func (b *BlockChain) maybeAcceptBlock(block *hcashutil.Block, flags BehaviorFlags) (bool, error) {
++	dryRun := flags&BFDryRun == BFDryRun
++
++	// Get a block node for the block previous to this one.  Will be nil
++	// if this is the genesis block.
++	prevNode, err := b.getPrevNodeFromBlock(block)
++	if err != nil {
++		log.Debugf("getPrevNodeFromBlock: %v", err)
++		return false, err
++	}
++
++	blockHeight := block.Height()
++
++	//check if the continues microblock exceeds the limit of 31
++	blockHash := block.Hash()
++	isKeyBlock := HashToBig(blockHash).Cmp(CompactToBig(block.MsgBlock().Header.Bits)) <= 0
++
++	if !isKeyBlock {
++		var prevKeyBlockHeight int64
++		if block.MsgBlock().Header.PrevKeyBlock.IsEqual(zeroHash) {
++			prevKeyBlockHeight = 0
++		} else {
++			prevKeyBlock, err := b.FetchBlockFromHash(&(block.MsgBlock().Header.PrevKeyBlock))
++			if err != nil {
++				return false, err
++			}
++			prevKeyBlockHeight = prevKeyBlock.Height()
++		}
++
++		heightDiff := blockHeight - prevKeyBlockHeight
++		if heightDiff > int64(b.chainParams.MaxMicroPerKey) {
++			str := fmt.Sprintf("the block with height %v exceeds the micro block number limit: "+
++				"the height differce is %v and the limit is %v",
++				blockHeight, heightDiff, b.chainParams.MaxMicroPerKey)
++			return false, ruleError(ErrHighHash, str)
++		}
++	}
++
++	// The block must pass all of the validation rules which depend on the
++	// position of the block within the block chain.
++	err = b.checkBlockContext(block, prevNode, flags)
++	if err != nil {
++		return false, err
++	}
++
++	// Prune stake nodes and block nodes which are no longer needed before
++	// creating a new node.
++	if !dryRun {
++		err := b.pruner.pruneChainIfNeeded()
++		if err != nil {
++			return false, err
++		}
++	}
++
++	// Create a new block node for the block and add it to the in-memory
++	// block chain (could be either a side chain or the main chain).
++	//blockHeader := &block.MsgBlock().Header
++	newNode := newBlockNode(block, ticketsSpentInBlock(block),
++		ticketsRevokedInBlock(block), voteBitsInBlock(block))
++	if prevNode != nil {
++		newNode.parent = prevNode
++		newNode.height = blockHeight
++		newNode.workSum.Add(prevNode.workSum, newNode.workSum)
++	}
++
++	// Fetching a stake node could enable a new DoS vector, so restrict
++	// this only to blocks that are recent in history.
++	if newNode.height < b.bestNode.height-minMemoryNodes {
++		newNode.stakeNode, err = b.fetchStakeNode(newNode)
++		if err != nil {
++			return false, err
++		}
++		newNode.stakeUndoData = newNode.stakeNode.UndoData()
++	}
++
++	// Connect the passed block to the chain while respecting proper chain
++	// selection according to the chain with the most proof of work.  This
++	// also handles validation of the transaction scripts.
++	isMainChain, err := b.connectBestChain(newNode, block, flags)
++	if err != nil {
++		return false, err
++	}
++
++	// Notify the caller that the new block was accepted into the block
++	// chain.  The caller would typically want to react by relaying the
++	// inventory to other peers.
++	if !dryRun {
++		b.chainLock.Unlock()
++		b.sendNotification(NTBlockAccepted,
++			&BlockAcceptedNtfnsData{isMainChain, block})
++		b.chainLock.Lock()
++	}
++
++	return isMainChain, nil
++}
+ 
+9  blockchain/bench_test.go
+@@ -0,0 +1,9 @@
++// Copyright (c) 2015 The btcsuite developers
++// Copyright (c) 2015-2016 The Decred developers
++// Use of this source code is governed by an ISC
++// license that can be found in the LICENSE file.
++
++package blockchain_test
++
++// TODO Make benchmarking tests for various functions, such as sidechain
++// evaluation.
+ 
+180  blockchain/blocklocator.go
+@@ -0,0 +1,180 @@
++// Copyright (c) 2013-2016 The btcsuite developers
++// Copyright (c) 2015-2016 The Decred developers
++// Use of this source code is governed by an ISC
++// license that can be found in the LICENSE file.
++
++package blockchain
++
++import (
++	"github.com/HcashOrg/hcashd/chaincfg/chainhash"
++	"github.com/HcashOrg/hcashd/database"
++	"github.com/HcashOrg/hcashd/wire"
++)
++
++// BlockLocator is used to help locate a specific block.  The algorithm for
++// building the block locator is to add the hashes in reverse order until
++// the genesis block is reached.  In order to keep the list of locator hashes
++// to a reasonable number of entries, first the most recent previous 10 block
++// hashes are added, then the step is doubled each loop iteration to
++// exponentially decrease the number of hashes as a function of the distance
++// from the block being located.
++//
++// For example, assume you have a block chain with a side chain as depicted
++// below:
++// 	genesis -> 1 -> 2 -> ... -> 15 -> 16  -> 17  -> 18
++// 	                              \-> 16a -> 17a
++//
++// The block locator for block 17a would be the hashes of blocks:
++// [17a 16a 15 14 13 12 11 10 9 8 6 2 genesis]
++type BlockLocator []*chainhash.Hash
++
++// blockLocatorFromHash returns a block locator for the passed block hash.
++// See BlockLocator for details on the algotirhm used to create a block locator.
++//
++// In addition to the general algorithm referenced above, there are a couple of
++// special cases which are handled:
++//
++//  - If the genesis hash is passed, there are no previous hashes to add and
++//    therefore the block locator will only consist of the genesis hash
++//  - If the passed hash is not currently known, the block locator will only
++//    consist of the passed hash
++//
++// This function MUST be called with the chain state lock held (for reads).
++func (b *BlockChain) blockLocatorFromHash(hash *chainhash.Hash) BlockLocator {
++	// The locator contains the requested hash at the very least.
++	locator := make(BlockLocator, 0, wire.MaxBlockLocatorsPerMsg)
++	locator = append(locator, hash)
++
++	// Nothing more to do if a locator for the genesis hash was requested.
++	if hash.IsEqual(b.chainParams.GenesisHash) {
++		return locator
++	}
++
++	// Attempt to find the height of the block that corresponds to the
++	// passed hash, and if it's on a side chain, also find the height at
++	// which it forks from the main chain.
++	blockHeight := int64(-1)
++	forkHeight := int64(-1)
++	node, exists := b.index[*hash]
++	if !exists {
++		// Try to look up the height for passed block hash.  Assume an
++		// error means it doesn't exist and just return the locator for
++		// the block itself.
++		var height int64
++		err := b.db.View(func(dbTx database.Tx) error {
++			var err error
++			height, err = dbFetchHeightByHash(dbTx, hash)
++			return err
++		})
++		if err != nil {
++			return locator
++		}
++
++		blockHeight = height
++	} else {
++		blockHeight = node.height
++
++		// Find the height at which this node forks from the main chain
++		// if the node is on a side chain.
++		if !node.inMainChain {
++			for n := node; n.parent != nil; n = n.parent {
++				if n.inMainChain {
++					forkHeight = n.height
++					break
++				}
++			}
++		}
++	}
++
++	// Generate the block locators according to the algorithm described in
++	// in the BlockLocator comment and make sure to leave room for the final
++	// genesis hash.
++	//
++	// The error is intentionally ignored here since the only way the code
++	// could fail is if there is something wrong with the database which
++	// will be caught in short order anyways and it's also safe to ignore
++	// block locators.
++	_ = b.db.View(func(dbTx database.Tx) error {
++		iterNode := node
++		increment := int64(1)
++		for len(locator) < wire.MaxBlockLocatorsPerMsg-1 {
++			// Once there are 10 locators, exponentially increase
++			// the distance between each block locator.
++			if len(locator) > 10 {
++				increment *= 2
++			}
++			blockHeight -= increment
++			if blockHeight < 1 {
++				break
++			}
++
++			// As long as this is still on the side chain, walk
++			// backwards along the side chain nodes to each block
++			// height.
++			if forkHeight != -1 && blockHeight > forkHeight {
++				// Intentionally use parent field instead of the
++				// getPrevNodeFromNode function since we don't
++				// want to dynamically load nodes when building
++				// block locators.  Side chain blocks should
++				// always be in memory already, and if they
++				// aren't for some reason it's ok to skip them.
++				for iterNode != nil && blockHeight > iterNode.height {
++					iterNode = iterNode.parent
++				}
++				if iterNode != nil && iterNode.height == blockHeight {
++					locator = append(locator, &iterNode.hash)
++				}
++				continue
++			}
++
++			// The desired block height is in the main chain, so
++			// look it up from the main chain database.
++			h, err := dbFetchHashByHeight(dbTx, blockHeight)
++			if err != nil {
++				// This shouldn't happen and it's ok to ignore
++				// block locators, so just continue to the next
++				// one.
++				log.Warnf("Lookup of known valid height failed %v",
++					blockHeight)
++				continue
++			}
++			locator = append(locator, h)
++		}
++
++		return nil
++	})
++
++	// Append the appropriate genesis block.
++	locator = append(locator, b.chainParams.GenesisHash)
++	return locator
++}
++
++// BlockLocatorFromHash returns a block locator for the passed block hash.
++// See BlockLocator for details on the algorithm used to create a block locator.
++//
++// In addition to the general algorithm referenced above, there are a couple of
++// special cases which are handled:
++//
++//  - If the genesis hash is passed, there are no previous hashes to add and
++//    therefore the block locator will only consist of the genesis hash
++//  - If the passed hash is not currently known, the block locator will only
++//    consist of the passed hash
++//
++// This function is safe for concurrent access.
++func (b *BlockChain) BlockLocatorFromHash(hash *chainhash.Hash) BlockLocator {
++	b.chainLock.RLock()
++	locator := b.blockLocatorFromHash(hash)
++	b.chainLock.RUnlock()
++	return locator
++}
++
++// LatestBlockLocator returns a block locator for the latest known tip of the
++// main (best) chain.
++//
++// This function is safe for concurrent access.
++func (b *BlockChain) LatestBlockLocator() (BlockLocator, error) {
++	b.chainLock.RLock()
++	locator := b.blockLocatorFromHash(&b.bestNode.hash)
++	b.chainLock.RUnlock()
++	return locator, nil
++}
