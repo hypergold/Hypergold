@@ -1,0 +1,202 @@
++// Copyright (c) 2013-2016 The btcsuite developers
++// Copyright (c) 2015-2016 The Decred developers
++// Use of this source code is governed by an ISC
++// license that can be found in the LICENSE file.
++
++package blockchain_test
++
++import (
++	"bytes"
++	"compress/bzip2"
++	"encoding/gob"
++	"os"
++	"path/filepath"
++	"testing"
++
++	"github.com/HcashOrg/hcashd/blockchain"
++	"github.com/HcashOrg/hcashutil"
++)
++
++// TestBlockchainFunction tests the various blockchain API to ensure proper
++// functionality.
++func TestBlockchainFunctions(t *testing.T) {
++	// Create a new database and chain instance to run tests against.
++	chain, teardownFunc, err := chainSetup("validateunittests",
++		simNetParams)
++	if err != nil {
++		t.Errorf("Failed to setup chain instance: %v", err)
++		return
++	}
++	defer teardownFunc()
++
++	// The genesis block should fail to connect since it's already inserted.
++	genesisBlock := simNetParams.GenesisBlock
++	err = chain.CheckConnectBlock(hcashutil.NewBlock(genesisBlock))
++	if err == nil {
++		t.Errorf("CheckConnectBlock: Did not receive expected error")
++	}
++
++	// Load up the rest of the blocks up to HEAD~1.
++	filename := filepath.Join("testdata/", "blocks0to168.bz2")
++	fi, err := os.Open(filename)
++	if err != nil {
++		t.Errorf("Unable to open %s: %v", filename, err)
++	}
++	bcStream := bzip2.NewReader(fi)
++	defer fi.Close()
++
++	// Create a buffer of the read file.
++	bcBuf := new(bytes.Buffer)
++	bcBuf.ReadFrom(bcStream)
++
++	// Create decoder from the buffer and a map to store the data.
++	bcDecoder := gob.NewDecoder(bcBuf)
++	blockChain := make(map[int64][]byte)
++
++	// Decode the blockchain into the map.
++	if err := bcDecoder.Decode(&blockChain); err != nil {
++		t.Errorf("error decoding test blockchain: %v", err.Error())
++	}
++
++	// Insert blocks 1 to 168 and perform various tests.
++	for i := 1; i <= 168; i++ {
++		bl, err := hcashutil.NewBlockFromBytes(blockChain[int64(i)])
++		if err != nil {
++			t.Errorf("NewBlockFromBytes error: %v", err.Error())
++		}
++
++		_, _, err = chain.ProcessBlock(bl, blockchain.BFNone)
++		if err != nil {
++			t.Fatalf("ProcessBlock error at height %v: %v", i, err.Error())
++		}
++	}
++
++	val, err := chain.TicketPoolValue()
++	if err != nil {
++		t.Errorf("Failed to get ticket pool value: %v", err)
++	}
++	expectedVal := hcashutil.Amount(3495091704)
++	if val != expectedVal {
++		t.Errorf("Failed to get correct result for ticket pool value; "+
++			"want %v, got %v", expectedVal, val)
++	}
++
++	a, _ := hcashutil.DecodeAddress("SsbKpMkPnadDcZFFZqRPY8nvdFagrktKuzB")
++	hs, err := chain.TicketsWithAddress(a)
++	if err != nil {
++		t.Errorf("Failed to do TicketsWithAddress: %v", err)
++	}
++	expectedLen := 223
++	if len(hs) != expectedLen {
++		t.Errorf("Failed to get correct number of tickets for "+
++			"TicketsWithAddress; want %v, got %v", expectedLen, len(hs))
++	}
++
++	totalSubsidy := chain.TotalSubsidy()
++	expectedSubsidy := int64(35783267326630)
++	if expectedSubsidy != totalSubsidy {
++		t.Errorf("Failed to get correct total subsidy for "+
++			"TotalSubsidy; want %v, got %v", expectedSubsidy,
++			totalSubsidy)
++	}
++}
+ 
+24  blockchain/chaingen/doc.go
+@@ -0,0 +1,24 @@
++// Copyright (c) 2017 The Decred developers
++// Use of this source code is governed by an ISC
++// license that can be found in the LICENSE file.
++
++/*
++Package chaingen provides facilities for generating a full chain of blocks.
++
++Overview
++
++Many consensus-related tests require a full chain of valid blocks with several
++pieces of contextual information such as versions and votes.  Generating such a
++chain is not a trivial task due to things such as the fact that tickets must be
++purchased (at the correct ticket price), the appropriate winning votes must be
++cast (which implies keeping track of all live tickets and implementing the
++lottery selection algorithm), and all of the state-specific header fields such
++as the pool size and the proof-of-work and proof-of-stake difficulties must be
++set properly.
++
++In order to simplify this complex process, this package provides a generator
++that keeps track of all of the necessary state and generates and solves blocks
++accordingly while allowing the caller to manipulate the blocks via munge
++functions.
++*/
++package chaingen
+ 
+71  blockchain/chaingen/example_test.go
+@@ -0,0 +1,71 @@
++// Copyright (c) 2017 The Decred developers
++// Use of this source code is governed by an ISC
++// license that can be found in the LICENSE file.
++
++package chaingen_test
++
++import (
++	"fmt"
++
++	"github.com/HcashOrg/hcashd/blockchain/chaingen"
++	"github.com/HcashOrg/hcashd/chaincfg"
++)
++
++// This example demonstrates creating a new generator instance and using it to
++// generate the required premine block and enough blocks to have mature coinbase
++// outputs to work with along with asserting the generator state along the way.
++func Example_basicUsage() {
++	params := &chaincfg.SimNetParams
++	g, err := chaingen.MakeGenerator(params)
++	if err != nil {
++		fmt.Println(err)
++		return
++	}
++
++	// Shorter versions of useful params for convenience.
++	coinbaseMaturity := params.CoinbaseMaturity
++
++	// ---------------------------------------------------------------------
++	// Premine.
++	// ---------------------------------------------------------------------
++
++	// Add the required premine block.
++	//
++	//   genesis -> bp
++	g.CreatePremineBlock("bp", 0)
++	g.AssertTipHeight(1)
++	fmt.Println(g.TipName())
++
++	// ---------------------------------------------------------------------
++	// Generate enough blocks to have mature coinbase outputs to work with.
++	//
++	//   genesis -> bp -> bm0 -> bm1 -> ... -> bm#
++	// ---------------------------------------------------------------------
++
++	for i := uint16(0); i < coinbaseMaturity; i++ {
++		blockName := fmt.Sprintf("bm%d", i)
++		g.NextBlock(blockName, nil, nil)
++		g.SaveTipCoinbaseOuts()
++		fmt.Println(g.TipName())
++	}
++	g.AssertTipHeight(uint32(coinbaseMaturity) + 1)
++
++	// Output:
++	// bp
++	// bm0
++	// bm1
++	// bm2
++	// bm3
++	// bm4
++	// bm5
++	// bm6
++	// bm7
++	// bm8
++	// bm9
++	// bm10
++	// bm11
++	// bm12
++	// bm13
++	// bm14
++	// bm15
