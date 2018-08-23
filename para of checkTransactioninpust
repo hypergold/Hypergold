@@ -1,0 +1,50 @@
+@@ -1004,7 +1004,7 @@ func (mp *TxPool) maybeAcceptTransaction(chain *blockchain.BlockChain, tx *hcash
+	// filled in by the miner.
+ 	txFee, _, _, err := blockchain.CheckTransactionInputs(chain, mp.cfg.SubsidyCache,
+		tx, nextBlockKeyHeight, utxoView, false, mp.cfg.ChainParams, nil)
+		tx, nextBlockHeight, nextBlockKeyHeight, utxoView, blockchain.FraudProofNoCheck, mp.cfg.ChainParams, nil)
+	if err != nil {
+		if cerr, ok := err.(blockchain.RuleError); ok {
+			return nil, chainRuleError(cerr)
+View  
+3  mining.go
+ @@ -1870,6 +1870,7 @@ mempoolLoop:
+				prioItem.priority < mempool.MinHighPriority {
+ 				heap.Push(priorityQueue, prioItem)
+				dependers[*(tx.Hash())] = deps
+				continue
+			}
+		}
+ @@ -1883,7 +1884,7 @@ mempoolLoop:
+ 		_, _, _, err = blockchain.CheckTransactionInputs(blockManager.chain, subsidyCache, tx,
+			nextBlockKeyHeight, blockUtxos, false, server.chainParams, keyHeightCache)
+			nextBlockHeight, nextBlockKeyHeight, blockUtxos, blockchain.FraudProofNoCheck, server.chainParams, keyHeightCache)
+		if err != nil {
+			minrLog.Tracef("Skipping tx %s due to error in "+
+				"CheckTransactionInputs: %v", tx.Hash(), err)
+View  
+8  rpcserver.go
+ @@ -2765,10 +2765,10 @@ func (state *gbtWorkState) blockTemplateResult(bm *blockManager, useCoinbaseValu
+ 			fee, _, _, err = blockchain.CheckTransactionInputs(bm.chain,
+				bm.chain.FetchSubsidyCache(),
+				txU,
+				txU, int64(template.Block.Header.Height),
+				int64(template.Block.Header.KeyHeight),
+				view,
+				true, // Ensure fraud proofs are correct
+				blockchain.FraudProofKeyBlockCheck, // Ensure fraud proofs are correct
+				bm.server.chainParams,
+					nil)
+			if err != nil {
+ @@ -2884,10 +2884,10 @@ func (state *gbtWorkState) blockTemplateResult(bm *blockManager, useCoinbaseValu
+ 			fee, _, _, err = blockchain.CheckTransactionInputs(bm.chain,
+				bm.chain.FetchSubsidyCache(),
+				txU,
+				txU, int64(template.Block.Header.Height),
+				int64(template.Block.Header.KeyHeight),
+				view,
+				true, // Ensure fraud proofs are correct
+				blockchain.FraudProofKeyBlockCheck, // Ensure fraud proofs are correct
+				bm.server.chainParams,
+					nil)
+			if err != nil {
